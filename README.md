@@ -38,9 +38,3 @@ Una agenda de contactos (Phonebook) donde puedes:
 - Filtrar la lista por nombre.
 - Agregar nuevas personas mediante un formulario.
 - Validar que no se repitan nombres.
-
-## Cómo ejecutar el proyecto
-
-1. Instala las dependencias:
-   ```bash
-   npm install
