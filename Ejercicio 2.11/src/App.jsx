@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
-import Axios from "axios";
+import axios from "axios";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -39,7 +39,7 @@ const App = () => {
   };
 
   useEffect(() => { 
-    Axios
+    axios
       .get('http://localhost:3001/persons')
       .then(response => { 
         setPersons(response.data);
