@@ -1,0 +1,8 @@
+.added {
+  color: green;
+  padding: 2rem;
+  background: lightgreen;
+  font-size: 2rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}

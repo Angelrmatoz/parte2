@@ -4,10 +4,10 @@ const Notification = ({message}) => {
     }
 
     return (
-        <div className="error">
+        <div className="added">
             {message}
         </div>
     );
 }
 
-export default Error;
+export default Notification;
