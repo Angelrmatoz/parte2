@@ -7,3 +7,13 @@
   margin-bottom: 1rem;
   font-style: solid;
 }
+
+.error {
+  color: red;
+  padding: 2rem;
+  background: lightcoral;
+  font-size: 2rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  font-style: solid;
+}

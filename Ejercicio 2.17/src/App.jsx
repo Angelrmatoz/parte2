@@ -3,7 +3,7 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 import personServices from "./services/personServices";
-import Notification from "./components/Error";
+import Message from "./components/Message";
 import "./index.css";
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   const [filterText, setFilterText] = useState("");
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [notification, setNotification] = useState({ message: "", type: "" });
 
   const handleFilterChange = (event) => setFilterText(event.target.value);
 
@@ -61,9 +61,9 @@ const App = () => {
       setPersons(persons.concat(response.data));
       setNewName("");
       setNewNumber("");
-      setErrorMessage(`Added ${newName}`);
+    setNotification({ message: `Added ${newName}`, type: "added" });
       setTimeout(() => {
-        setErrorMessage("");
+        setNotification({ message: "", type: "" });
       }, 5000);
     });
     };
@@ -72,6 +72,11 @@ const App = () => {
     if (window.confirm(`Delete ${name}?`)) {
       personServices.deletePerson(id).then(() => {
         setPersons(persons.filter((person) => person.id !== id));
+      }).catch((error) => {
+        setNotification({ message: `Information of ${name} has already been removed from server`, type: "error" }, error);
+        setTimeout(() => {
+          setNotification({ message: "", type: "" });
+        }, 5000);
       });
     }
   };
@@ -85,7 +90,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={errorMessage} />
+      <Message message={notification.message} type={notification.type} />
       <Filter newText={filterText} handleTextFilter={handleFilterChange} />
 
       <h2>add a new</h2>
