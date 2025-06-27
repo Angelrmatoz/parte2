@@ -51,17 +51,6 @@ const App = () => {
             );
             setNewName("");
             setNewNumber("");
-          })
-          .catch(() => {
-            setErrorMessage(
-              `Information of ${existingPerson.name} has already been removed from server`
-            );
-            setTimeout(() => {
-              setErrorMessage("");
-            }, 5000);
-            setPersons(
-              persons.filter((person) => person.id !== existingPerson.id)
-            );
           });
       }
       return;
@@ -77,7 +66,7 @@ const App = () => {
         setErrorMessage("");
       }, 5000);
     });
-  };
+    };
 
   const handleDelete = (id, name) => {
     if (window.confirm(`Delete ${name}?`)) {
